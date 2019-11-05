@@ -1,0 +1,24 @@
+.sidebar{
+    min-height: calc(100vh - 20px);
+} 
+
+/*viewport height, calc(100vh +-) to be 100 percent of the vh of any device + for space from the top, - from the bottom*/
+
+.navbar-nav{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    
+}
+.navbar-nav li a{
+    font-size: 2em; /*in relationship to those existing in the page already*/
+}
+
+.mainnav{
+    margin-top: 30px; /*px or percentage*/
+}
+
+.mainnav ul a{
+    padding: 10px 20px;
+    font-size: 2em;
+}

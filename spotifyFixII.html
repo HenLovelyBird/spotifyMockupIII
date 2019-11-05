@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Spotify MockupII</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="spotifyFixII.css">
+</head>
+
+<body>
+    <!--div.container-fluid>.row>.col*2-->
+    <!--bootstrap is mobile first-->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar" style="background-color: blue;">
+                <nav class="navbar d-inline">
+                    <li><a href="home"></a>da</li>
+                    <li><a href="some"></a>di</li>
+                    <li><a href="other"></a>la</li>
+                </nav>
+            </div>
+            <div class="col-sm-9 col-md-10 d-inline col-sm-offset-3 col-md-offset-2 main"
+                style="background-color: cornflowerblue;">
+                <h1>Hello I am a revision of the Spotify Exercise.</h1>
+                <!--offset for keeping it in the screen and other col-->
+                <nav class="navbar navbar-expand-sm mainnav">
+                    <div class="mx-auto d-sm-flex d-block flex-sm-nowrap"> <!--this is only in a new div to not have so much inside of the nav class, can be also good for screenreaders-->
+                        <div class="text-center">
+                            <ul class="navbar-nav"> 
+                                <a href="#">pop</a>
+                                <a href="#">whiz!</a>
+                                <a href="#">wow</a>
+                            </ul>
+                        </div>
+                        <div class="container">
+                        <div class="row">
+                                <div class="col-sm-9 col-md-10 d-inline col-sm-offset-3 col-md-offset-2 mainrow" id="albums"
+                                style="background-color: cornflowerblue;">
+                            <ul class="APISearch" style="list-style: none;">
+                              <li><img src="img/numan.png" class="img-fluid mb-2"></li>  
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script>
+        function loadMusic(){
+            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=gary&numan", {
+                headers: {
+                    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+                    "X-RapidAPI-Key": "26481b32f0mshd0632c6bc822ba0p1beb06jsne1e5167c63bf"
+                },
+                method: "GET"
+            }).then(function(res){
+                return res.json()
+            }).then(function(tracks){
+                console.log(tracks)
+
+                var albumsDiv = document.querySelector(".APISearch")
+
+                tracks.data.forEach(track => {
+                    albumsDiv.innerHTML += `
+                        <li class="row-sm-2">
+                            <img src="${track.album.cover}" />
+                            <span>${track.title} </span>
+                        </li>
+                    `
+                })
+            });
+        }
+
+        window.onload = function(){
+            loadMusic()
+        }
+
+
+    </script>
+</body>
+
+</html>

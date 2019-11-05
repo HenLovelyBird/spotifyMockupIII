@@ -1,0 +1,11 @@
+body{
+    background-image: linear-gradient(rgb(122, 122, 238), rgb(47, 47, 177), blue);
+    background-repeat: no-repeat;
+}
+
+#sidebar {
+    background-color: black;
+    color: white;
+    flex-direction: column;
+}
+
